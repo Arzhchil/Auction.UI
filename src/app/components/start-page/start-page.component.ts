@@ -10,29 +10,26 @@ import { lastValueFrom } from 'rxjs';
 })
 export class StartPageComponent implements OnInit {
 
-  lotsModel: LotsModel[] = [];
-  lotsGroup: any[] | undefined;
+  lots: LotsModel[] = [];
+  lotsGroup: any[];
 
   constructor(public lotsService: LotsService) {
   }
   ngOnInit(): void {
     let t = this;
-    console.log("123")
     t.getLots()
   }
 
   public async getLots() {
     let t = this;
-    await lastValueFrom(t.lotsService.GetAllLots())
+    await lastValueFrom(this.lotsService.getLots())
       .then(response => {
-        t.lotsGroup = response;
-        console.log('Response' + response)
-        console.log('lotsGroup' + t.lotsGroup)
+        t.lots = response;
+        console.log('lots')
+        console.log(t.lots)
       })
       .catch(ex => {
         console.log(ex)
-      })
-      .finally(() => {
       })
   }
 

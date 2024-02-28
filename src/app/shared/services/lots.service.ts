@@ -13,7 +13,11 @@ export class LotsService {
 
   constructor(private http: HttpClient) { }
 
-  public GetAllLots() : Observable<LotsModel[]> {
+  //public GetAllLots() : Observable<LotsInfoModel> {
+  //  return this.http.get<LotsInfoModel>(environment.apiUrl + this.url);
+  //}
+
+  getLots(): Observable<LotsModel[]> {
     return this.http.get<LotsModel[]>(environment.apiUrl + this.url);
   }
 

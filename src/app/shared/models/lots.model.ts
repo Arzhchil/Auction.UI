@@ -1,6 +1,6 @@
 export class LotsModel{
-  public Id: number | undefined;
-  public Name: string = "";
-  public StartBet: number | undefined;
-  public Alive: boolean | undefined;
+  public id: number;
+  public name: string = "";
+  public startBet?: number;
+  public alive?: boolean;
 }

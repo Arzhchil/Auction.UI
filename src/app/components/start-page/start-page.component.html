@@ -1,11 +1,10 @@
-<p>lots work</p>
 <div class="container">
   <div class="content">
     <ul class="lots__list">
-      <li class="lots__item" *ngFor="let i of lotsGroup">
-        <h3 class="lots__name-id">{{i.Name}} {{i.Id}}</h3>
-        <p class="lots__price">{{i.StartBet}}</p>
-        <p class="lots__status">{{i.Alive}}</p>
+      <li class="lots__item" *ngFor="let i of lots">
+        <h3 class="lots__name-id">{{i.name}} {{i.id}}</h3>
+        <p class="lots__price">{{i.startBet}}</p>
+        <p class="lots__status">{{i.alive}}</p>
       </li>
     </ul>
   </div>
