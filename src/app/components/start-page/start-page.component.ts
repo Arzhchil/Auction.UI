@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LotsModel } from '../../shared/models';
 import { LotsService } from '../../shared/services';
 import { lastValueFrom } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-start-page',
@@ -13,7 +14,9 @@ export class StartPageComponent implements OnInit {
   lots: LotsModel[] = [];
   lotsGroup: any[];
 
-  constructor(public lotsService: LotsService) {
+  constructor(
+    public lotsService: LotsService,
+    private router: Router,) {
   }
   ngOnInit(): void {
     let t = this;
@@ -31,6 +34,11 @@ export class StartPageComponent implements OnInit {
       .catch(ex => {
         console.log(ex)
       })
+  }
+
+  public navigate() {
+    let t = this;
+    t.router.navigate(['login'])
   }
 
 }

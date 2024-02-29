@@ -50,8 +50,7 @@ body {
 
 .container {
   max-width: 1440px;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding: 50px 30px;
   margin: 0 auto;
 }
 
@@ -92,4 +91,164 @@ body {
 .section {
   padding-top: 50px;
   padding-bottom: 50px;
+}
+
+/* HEADER */
+
+.header {
+  display: flex;
+  padding: 10px 50px;
+  justify-content: space-between;
+}
+
+.header__logo {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.header__authorization-btn {
+  background-color: rgb(124, 18, 18);
+  padding: 10px 15px;
+  border-radius: 8px;
+  color: #fff;
+  transition: color .3s ease-in-out, background-color .3s ease-in-out;
+}
+
+.header__authorization-btn:focus {
+  background-color: rgb(152, 45, 45)
+}
+
+.header__authorization-btn:hover {
+  background-color: rgb(152, 45, 45)
+}
+
+.header__authorization-btn:active {
+  background-color: rgb(105, 29, 29)
+}
+
+/* Lots */
+
+.lots__list {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.lots__item {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card_bg);
+  color: var(--text);
+  border-radius: 10px;
+}
+
+.lots__img {
+  background-image: url('assets/img/mandarin.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  min-width: 300px;
+  height: 230px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-position: center;
+}
+
+.lots__descr {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+  padding-bottom: 10px;
+}
+
+.lots__name {
+  align-self: center;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.lots__id {
+  font-size: 24px;
+}
+
+.lots__startBet-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.lots__currentBet-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.lots__startBet {
+  font-size: 16px;
+}
+
+.lots__number {
+  margin-right: 5px;
+}
+
+.lots__btn {
+  padding: 10px 15px;
+  border-radius: 10px;
+  background-color: var(--btn);
+  color: var(--text);
+  transition: background-color .3s ease-in-out, color .3s ease-in-out;
+}
+
+.lots__btn:focus {
+  background-color: #f8c136;
+}
+
+.lots__btn:hover {
+  background-color: #f9cd5d;
+  color: #000;
+}
+
+.lots__btn:active {
+  background-color: #d29700;
+  color: #fff8f8;
+}
+
+/* authorization */
+
+.authorization__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.authorization__form {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.authorization__title {
+  margin-bottom: 10px;
+  color: #293241;
+}
+
+.form__label {
+  color: #000;
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+.inputs__group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.form__btn {
+  background-color: #000;
+  color: #fff;
+  font-size: 20px;
+  padding: 12px 18px;
+  border-radius: 10px;
 }
