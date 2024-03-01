@@ -1,0 +1,119 @@
+.modal-container {
+  border-radius: 3rem;
+  background-color: white;
+  padding: 3rem;
+}
+
+.main-input {
+  border-radius: 2rem;
+  width: 100%;
+  padding: 1rem 1.5rem;
+}
+
+.form_close {
+  background-color: transparent;
+}
+
+.modal__title {
+  font-size: 3rem;
+  color: var(--green);
+  margin-bottom: 20px;
+}
+
+.main-input {
+  cursor: pointer;
+  color: var(--green);
+  font-size: 18px;
+  border: 1px solid rgba(13, 140, 70, 0.2);
+  transition: border-color .3s ease-in-out;
+}
+
+.main-input::placeholder {
+  color: rgba(13, 140, 70, 0.8);
+}
+
+.main-input:focus-visible {
+  border: 2px solid;
+  border-color: var(--green);
+  outline: none;
+}
+
+.main-input:focus::placeholder {
+  color: var(--green)
+}
+
+.main-input:hover {
+  border-color: var(--green);
+  outline: none;
+}
+
+.birthDate {
+  color: rgba(13, 140, 70, 0.95);
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+.submit__col {
+  display: flex;
+  justify-content: center;
+}
+
+.submit__btn {
+  margin-top: 15px;
+  padding: 12px 44px;
+}
+
+.float-end {
+  opacity: 0.6;
+  cursor: pointer;
+  transition: opacity .3s ease-in-out;
+}
+
+.float-end:hover {
+  opacity: 1;
+}
+
+
+@media (max-width: 1000px) {
+  .modal__title {
+    font-size: 2rem;
+  }
+
+  .modal-container {
+    padding: 2rem;
+  }
+
+  .submit__btn {
+    padding: 5px 40px;
+    font-size: 18px;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .modal__title {
+    font-size: 22px;
+  }
+
+  .modal-container {
+    padding: 1rem;
+    border-radius: 1.5rem;
+  }
+
+  .main-input {
+    padding: 12px 18px;
+    font-size: 15px;
+  }
+
+  .submit__btn {
+    padding: 5px 20px;
+    font-size: 16px;
+  }
+
+  .regCheck {
+    padding-right: 0;
+    padding-left: 0;
+    font-size: 13px;
+  }
+
+}

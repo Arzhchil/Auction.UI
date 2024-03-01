@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SecondPageComponent } from './components/second-page/second-page.component';
 import { StartPageComponent } from './components/start-page/start-page.component';
 const routes: Routes = [
   { path: '', redirectTo: 'lots', pathMatch: 'full'},
   {path : 'lots', component : StartPageComponent},
-  {path : 'login', component : SecondPageComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

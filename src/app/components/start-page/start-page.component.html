@@ -1,12 +1,18 @@
 <header class="header">
   <a href="#" class="header__logo">AUCTION</a>
-  <button class="header__authorization-btn btn-reset" (click)="navigate()">Авторизироваться</button>
+  <div class="authorization__btns-group" *ngIf="!badReq">
+    <button class="header__authorization-btn login__btn btn-reset" (click)="ShowLoginModal()">Войти</button>
+    <button class="header__authorization-btn registration__btn btn-reset" (click)="ShowRegistryModal()">Зарегистроваться</button>
+  </div>
+  <div class="userInfo" *ngIf='badReq'>
+    <p class="currentUserName">{{currentUser.email}}</p>
+  </div>
 </header>
 <section class="lots__section">
   <div class="container lots__container">
     <div class="lots__content">
       <ul class="lots__list list-reset">
-        <li class="lots__item" *ngFor="let i of lots">
+        <li [ngClass]="i.alive ? 'lots__item' : 'lots__item--disable'" *ngFor="let i of lots">
           <div class="lots__img"></div>
           <div class="lots__descr">
             <p class="lots__id">№ {{i.id}}</p>
@@ -25,26 +31,12 @@
                 <span class="valuta">RUB</span>
               </div>
             </div>
-            <button class="lots__btn btn-reset ">
+            <button [ngClass]="badReq ? 'lots__btn' : 'lots__btn--disable'">
               Сделать ставку
             </button>
           </div>
-          <!--<p *ngIf!="i.alive" class="lots__status">Лот закрыт</p>-->
         </li>
       </ul>
     </div>
   </div>
 </section>
-<!--<section class="lots__section">
-  <div class="container lots__container">
-    <div class="lots__content">
-      <ul class="lots__list list-reset">
-        <li class="lots__item" *ngFor="let i of lots">
-          <h3 class="lots__name-id">{{i.name}} {{i.id}}</h3>
-          <span class="lots__spanrice">{{i.startBet}} RUB</span>
-          <p *ngIf!="i.alive" class="lots__status">Лот закрыт</p>
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>-->

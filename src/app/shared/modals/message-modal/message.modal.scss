@@ -1,0 +1,42 @@
+.modal-container {
+    border-radius: 3rem;
+    background-color: white;
+    padding: 3rem;
+  }
+
+  .main-input {
+    border-radius: 2rem;
+    width: 100%;
+    padding: 1rem 1.5rem;
+  }
+
+  .form_close {
+    background-color: transparent;
+  }
+
+  .modal__tile {
+    font-size: 3rem;
+    color: var(--green);
+    margin-bottom: 20px;
+  }
+
+
+  .submit__col {
+    display: flex;
+    justify-content: center;
+  }
+
+  .submit__btn {
+    margin-top: 15px;
+    padding: 12px 44px;
+  }
+
+  .float-end {
+    opacity: 0.6;
+    cursor: pointer;
+    transition: opacity .3s ease-in-out;
+  }
+
+  .float-end:hover {
+    opacity: 1;
+  }

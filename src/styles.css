@@ -143,6 +143,16 @@ body {
   border-radius: 10px;
 }
 
+.lots__item--disable {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card_bg);
+  color: var(--text);
+  border-radius: 10px;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
 .lots__img {
   background-image: url('assets/img/mandarin.jpg');
   background-repeat: no-repeat;
@@ -200,6 +210,14 @@ body {
   transition: background-color .3s ease-in-out, color .3s ease-in-out;
 }
 
+.lots__btn--disable {
+  padding: 10px 15px;
+  border-radius: 10px;
+  background-color: grey;
+  color: #fff;
+  pointer-events: none;
+}
+
 .lots__btn:focus {
   background-color: #f8c136;
 }
@@ -216,39 +234,16 @@ body {
 
 /* authorization */
 
-.authorization__container {
+.authorization__btns-group {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
-.authorization__form {
-  background-color: #ffffff;
-  border-radius: 10px;
-  padding: 10px 20px;
+.login__btn {
+  margin-right: 30px;
 }
 
-.authorization__title {
-  margin-bottom: 10px;
-  color: #293241;
-}
-
-.form__label {
-  color: #000;
-  font-size: 16px;
-  margin-right: 5px;
-}
-
-.inputs__group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
-}
-
-.form__btn {
-  background-color: #000;
-  color: #fff;
+.userInfo {
   font-size: 20px;
-  padding: 12px 18px;
-  border-radius: 10px;
+  color: #fff
 }

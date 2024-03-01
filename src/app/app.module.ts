@@ -5,14 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StartPageComponent } from './components/start-page/start-page.component';
-import { SecondPageComponent } from './components/second-page/second-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RegistryModal } from './shared/modals/registry-modal/registry.modal';
+import { LoginModal } from './shared/modals/login-modal/login.modal';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     StartPageComponent,
-    SecondPageComponent,
+    RegistryModal,
+    LoginModal,
   ],
   imports: [
     BrowserModule,
@@ -20,6 +24,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     FormsModule,
     NgbModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
