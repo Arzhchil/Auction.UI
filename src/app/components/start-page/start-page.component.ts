@@ -15,7 +15,6 @@ export class StartPageComponent implements OnInit {
   lots: LotsModel[] = [];
   currentUser: any;
   badReq: boolean = false;
-  userBet: number;
   public userId: () => number;
   constructor(
     public lotsService: LotsService,
@@ -34,7 +33,6 @@ export class StartPageComponent implements OnInit {
     let t = this;
     t.getLots()
   }
-
   public async getLots() {
     let t = this;
     await lastValueFrom(this.lotsService.getLots())
@@ -49,7 +47,6 @@ export class StartPageComponent implements OnInit {
   }
   public async ShowRegistryModal() {
     let t = this;
-    // todo: вывести инфу о комиссии сети в модалке подтверждения
     t.modalRef = t.modalService.open(RegistryModal,
       {
         modalDialogClass: 'main-modal-custom',
@@ -61,7 +58,6 @@ export class StartPageComponent implements OnInit {
     t.modalRef
       .result.then((result) => {
         if (result) {
-          //записываем полученное значение из модалки
           t.registerUser(result);
         }
       });
@@ -81,6 +77,9 @@ export class StartPageComponent implements OnInit {
         if (t.currentUser.id !== 0) {
           t.badReq = true
         }
+        else {
+          alert('Ошибка регистрации. Повторите попытку')
+        }
       })
       .catch(ex => {
         console.log(ex)
@@ -90,8 +89,6 @@ export class StartPageComponent implements OnInit {
   }
   public async ShowLoginModal() {
     let t = this;
-
-    // todo: вывести инфу о комиссии сети в модалке подтверждения
     t.modalRef = t.modalService.open(LoginModal,
       {
         modalDialogClass: 'main-modal-custom',
@@ -103,8 +100,7 @@ export class StartPageComponent implements OnInit {
     t.modalRef
       .result.then((result) => {
         if (result) {
-          //записываем полученное значение из модалки
-          t.loginUser(result); //!!
+          t.loginUser(result);
         }
       });
   }
@@ -119,9 +115,12 @@ export class StartPageComponent implements OnInit {
           t.currentUser = response;
           console.log('currentUser')
           console.log(t.currentUser)
-        }
-        if (t.currentUser.id !== 0) {
-          t.badReq = true
+          if (t.currentUser.id !== 0) {
+            t.badReq = true
+          }
+          else {
+            alert('Ошибка входа. Повторите попытку')
+          }
         }
       })
       .catch(ex => {
@@ -130,9 +129,12 @@ export class StartPageComponent implements OnInit {
       .finally(() => {
       })
   }
-
   public async PostUserBet(item) {
     let t = this;
+    if (item.currentBet <= item.startBet) {
+      alert("Ваша ставка должна быть больше текущей цены")
+      return
+    }
     let userBet = new BetModel(t.currentUser.id, item.id, item.currentBet);
     console.log('user Bet')
     console.log(userBet)
@@ -140,6 +142,7 @@ export class StartPageComponent implements OnInit {
       .then(response => {
         if (response) {
           console.log('GOOD RESPONSE')
+          t.getLots()
         }
       })
       .catch(ex => {
