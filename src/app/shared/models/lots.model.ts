@@ -3,4 +3,5 @@ export class LotsModel{
   public name: string = "";
   public startBet?: number;
   public alive?: boolean;
+  public currentBet?: number;
 }

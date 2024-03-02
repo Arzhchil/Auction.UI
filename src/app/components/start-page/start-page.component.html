@@ -2,7 +2,8 @@
   <a href="#" class="header__logo">AUCTION</a>
   <div class="authorization__btns-group" *ngIf="!badReq">
     <button class="header__authorization-btn login__btn btn-reset" (click)="ShowLoginModal()">Войти</button>
-    <button class="header__authorization-btn registration__btn btn-reset" (click)="ShowRegistryModal()">Зарегистроваться</button>
+    <button class="header__authorization-btn registration__btn btn-reset"
+      (click)="ShowRegistryModal()">Зарегистроваться</button>
   </div>
   <div class="userInfo" *ngIf='badReq'>
     <p class="currentUserName">{{currentUser.email}}</p>
@@ -12,26 +13,27 @@
   <div class="container lots__container">
     <div class="lots__content">
       <ul class="lots__list list-reset">
-        <li [ngClass]="i.alive ? 'lots__item' : 'lots__item--disable'" *ngFor="let i of lots">
+        <li [ngClass]="i.alive ? 'lots__item' : 'lots__item--disable'" *ngFor="let i of lots; let e = index">
           <div class="lots__img"></div>
           <div class="lots__descr">
             <p class="lots__id">№ {{i.id}}</p>
             <h3 class="lots__name">{{i.name}}</h3>
             <div class="lots__startBet-section">
-              <span class="lots__startBet">Стартовая цена:</span>
+              <span class="lots__startBet">Текущая цена:</span>
               <div class="lots__price">
                 <span class="lots__number">{{i.startBet}}</span>
                 <span class="valuta">RUB</span>
               </div>
             </div>
-            <div class="lots__currentBet-section">
-              <span class="lots__currentBet">Текущая ставка:</span>
+            <div [ngClass]="badReq ? 'lots__currentBet-section--active' : 'lots__currentBet-section--disable'">
+              <span class="lots__currentBet">Ваша ставка:</span>
               <div class="lots__price">
-                <span class="lots__number">700</span>
+                <!--<input class="lots__bet-input" [(ngModel)]="i.startBet" type="number" [name]="'input-' + e">-->
+                <input class="lots__bet-input" [(ngModel)]="i.currentBet" type="number" [name]="'input-' + e">
                 <span class="valuta">RUB</span>
               </div>
             </div>
-            <button [ngClass]="badReq ? 'lots__btn' : 'lots__btn--disable'">
+            <button (click)="PostUserBet(i)" [ngClass]="badReq ? 'lots__btn' : 'lots__btn--disable'">
               Сделать ставку
             </button>
           </div>

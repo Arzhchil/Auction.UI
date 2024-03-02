@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { LotsModel, UserModel, LoginModel } from '../../shared/models';
-import { LotsService, UserService } from '../../shared/services';
+import { LotsModel, UserModel, LoginModel, BetModel } from '../../shared/models';
+import { LotsService, UserService, BetService } from '../../shared/services';
 import { lastValueFrom } from 'rxjs';
 import { RegistryModal } from '../../shared/modals/registry-modal/registry.modal';
 import { LoginModal } from 'src/app/shared/modals/login-modal/login.modal';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-
 @Component({
   selector: 'app-start-page',
   templateUrl: './start-page.component.html',
@@ -14,14 +13,15 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 export class StartPageComponent implements OnInit {
   public modalRef: NgbModalRef;
   lots: LotsModel[] = [];
-  lotsGroup: any[];
   currentUser: any;
   badReq: boolean = false;
+  userBet: number;
   public userId: () => number;
   constructor(
     public lotsService: LotsService,
     private modalService: NgbModal,
-    private userService: UserService,) {
+    private userService: UserService,
+    private betService: BetService) {
     let t = this;
     if (!t.userService.getCredential()) {
       console.log('current user not find')
@@ -34,6 +34,7 @@ export class StartPageComponent implements OnInit {
     let t = this;
     t.getLots()
   }
+
   public async getLots() {
     let t = this;
     await lastValueFrom(this.lotsService.getLots())
@@ -121,6 +122,24 @@ export class StartPageComponent implements OnInit {
         }
         if (t.currentUser.id !== 0) {
           t.badReq = true
+        }
+      })
+      .catch(ex => {
+        console.log(ex)
+      })
+      .finally(() => {
+      })
+  }
+
+  public async PostUserBet(item) {
+    let t = this;
+    let userBet = new BetModel(t.currentUser.id, item.id, item.currentBet);
+    console.log('user Bet')
+    console.log(userBet)
+    await lastValueFrom(t.betService.BetUser(userBet))
+      .then(response => {
+        if (response) {
+          console.log('GOOD RESPONSE')
         }
       })
       .catch(ex => {

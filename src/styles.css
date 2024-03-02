@@ -188,10 +188,14 @@ body {
   margin-bottom: 10px;
 }
 
-.lots__currentBet-section {
+.lots__currentBet-section--active {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
+}
+
+.lots__currentBet-section--disable {
+  display: none
 }
 
 .lots__startBet {
@@ -200,6 +204,14 @@ body {
 
 .lots__number {
   margin-right: 5px;
+}
+
+.lots__currentBet {
+  margin-right: 8px;
+}
+
+.lots__bet-input {
+  margin-right: 8px;
 }
 
 .lots__btn {
